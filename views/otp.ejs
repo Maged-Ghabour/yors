@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>رمز التأكيد</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+      
+    <!-- Add NavBar  -->
+
+
+<nav class="visitor-nav">
+      <div class="header">
+      <img src="/images/logo-trans9.png" alt="شعار الموقع" class="logo">
+     </div>
+
+      <a class="nav-link" href="/about">
+        <i class="bi bi-info-circle-fill"></i>&nbsp;
+        <span style="font-size: 20px;">عن يسر </span>
+      </a>
+
+      <a class="nav-link" href="/faq">
+        <i class="bi bi-question-circle-fill"></i>&nbsp;
+        <span style="font-size: 20px;">الاسئلة الشائعة</span>
+      </a>
+      <a class="nav-link" href="/support">
+        <i class="bi bi-headset"></i>&nbsp;
+        <span style="font-size: 20px;">الدعم الفني</span>
+      </a>
+    </nav>
+    
+    
+  <!-- End NavBar  -->
+   
+    <div class="container">
+      <form id="otp-form" method="post">
+        <h2>يرجى كتابة رمز التحقق</h2>
+        <input name="otp" type="text" placeholder="رمز التحقق" />
+        <% if(locals.error) { %>
+        <p class="error-alert"><%= error %></p>
+        <% } %>
+        <button type="submit">تحقق</button>
+      </form>
+    </div>
+    <div style="height: 62vh"></div>
+    <div class="footers">
+      <div class="row row-center">جميع الحقوق محفوظة لمنصة ﻳُسر 2025</div>
+    </div>
+  </body>
+</html>

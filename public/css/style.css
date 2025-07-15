@@ -1,0 +1,410 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+:root{
+  --primary-green: #265F59;
+  --primary-teal: #072C29;
+  --primary-light: #CDDEE2;
+  --primary-gold: #856D26;
+  --bg: #f2f2f2;
+  --form-bg: white;
+  --gray-border: rgb(192, 192, 192);
+  --shadow: rgb(218, 218, 218);
+  --err-bg: #ffd7d7;
+  --err-fg: #9f1b1b;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+*{
+  font-family: 'Cairo', sans-serif;
+}
+
+body, html {
+  background-color: var(--bg);
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  padding: 5px 20px;
+  background-color: var(--primary-green);
+  border-radius: 2px;
+  border: 1px solid var(--primary-teal);
+  color: white;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 200ms;
+}
+
+button:hover{
+  background-color: var(--primary-teal);
+}
+
+form, #request-details {
+  padding: 20px;
+  background-color: var(--form-bg);
+  width: fit-content;
+  border-radius: 4px;
+  box-shadow: 0px 0px 10px 0px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input, form textarea, form select{
+  border-radius: 2px;
+  border: 1px solid var(--gray-border);
+  padding: 5px;
+  transition: all;
+
+  &:focus{
+    outline: 1.5px solid var(--primary-green);
+  }
+}
+
+#login-form, #signup-form, #create-request-form, #otp-form{
+  width: auto;
+  margin: auto 20%;
+  margin-top: 10vh;
+}
+
+#request-details{
+  width: auto;
+  margin: auto 5%;
+  margin-top: 3vh;
+}
+
+a{
+  color: var(--primary-green);
+  text-decoration: none;
+
+  &:hover{
+    color: var(--primary-teal);
+  }
+}
+
+#signup-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#signup-cards-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.signup-card{
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0px 0px 10px 0px var(--shadow);
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--form-bg);
+  transition: all;
+  transition-duration: 500ms;
+
+  &:hover{
+    background-color: var(--primary-green);
+    color: white;
+  }
+  
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+
+th{
+  background-color: var(--primary-teal);
+  color: white;
+  padding: 10px;
+}
+
+.sidebar{
+  width: 20vw;
+  background-color: var(--primary-teal);
+  color: white;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.dashboard-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Fixed to 2 columns */
+  gap: 20px;
+  max-height: 50vh;
+  margin: 0 auto;
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.card {
+  background-color: var(--form-bg);
+  height: auto;               /* Let height adjust to content */
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px 0px var(--shadow);
+  background-color: var(--form-bg);
+  transition: all;
+  transition-duration: 500ms;
+
+  &:hover{
+    background-color: var(--primary-green);
+    color: white;
+  }
+}
+
+.dashboard-content{
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.sidebar-link{
+  color: white;
+  text-decoration: none;
+  padding: 2px 10px;
+  display: block;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 200ms;
+  &:hover{
+    background-color: white;
+    color: var(--primary-green);
+  }
+}
+
+.error-alert {
+  padding: 5px 10px;
+  border-radius: 2px;
+  background-color: var(--err-bg);
+  color: var(--err-fg);
+}
+
+.container{
+  padding: 10px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.image-grid img {
+  width: 100%; /* fills 50% of the container due to 2 columns */
+  height: auto; /* maintains aspect ratio */
+  display: block;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.row-center{
+  align-items: center;
+  justify-content: center;
+}
+
+.request-action-buttons form{
+  background-color: transparent !important;
+  box-shadow: none !important;
+  padding: 0px !important;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.btn {
+  border: 0px;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all;
+}
+
+.btn.red {
+  background-color: var(--err-fg);
+  color: white;
+}
+
+.btn.red:hover {
+  background-color: darkred;
+  color: white;
+}
+
+.main-container {
+  background-color: var(--primary-light);
+  width: 100vw;
+}
+
+.img-cover{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.big-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 275px;
+  height: 275px;
+  border-radius: 50%;
+  display: flex;
+}
+
+nav {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a{
+  font-weight: bold;;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2px 20px;
+  transition: all 500ms;
+
+  &:hover{
+    background-color: var(--primary-green);
+    color: white;
+  }
+}
+
+.footers{
+  padding: 8px;
+  background-color: rgba(34, 75, 63, 0.897);
+  color: white;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.col-center {
+  align-items: center;
+}
+
+
+
+.visitor-nav{
+  justify-content: start;
+  font-size: 0.85em;
+  background-color: rgba(34, 75, 63, 0.879)
+}
+
+
+/* تنسيق الشعار */
+.logo {
+  height: 50px;
+  width: auto;
+  padding: 1px;
+}
+
+
+.backBtn{
+    font-size: 1.5rem;
+    border: 1px solid var(--primary-green);
+    padding: 0.2rem 1rem;
+    border-radius: 8px;
+    margin: 3rem;
+    background: #fff;
+    text-decoration:none;
+}
+
+.backBtn:hover{
+  background-color:var(--primary-green) ;f;
+  color:#fff;
+}

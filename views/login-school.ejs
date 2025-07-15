@@ -1,0 +1,42 @@
+<!-- http://localhost:3000/auth/signup?accountType=SCHOOL -->
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+    
+    <!-- Add NavBar  -->
+
+
+<nav class="visitor-nav">
+      <div class="header">
+      <img src="/images/logo-trans9.png" alt="شعار الموقع" class="logo">
+     </div>
+
+    </nav>
+    
+    
+  <!-- End NavBar  -->
+    <div class="container">
+      <form id="login-form" method="post">
+        <a href="/">الصفحة الرئيسية</a>
+        <h2>تسجيل الدخول ( ادارة مدرسة )</h2>
+        <input name="loginType" type="hidden" value="SCHOOL" />
+        <input name="email" type="text" placeholder="البريد الإلكتروني" />
+        <input name="password" type="password" placeholder="كلمة المرور" />
+        <% if(locals.error) { %>
+        <p class="error-alert"><%= error %></p>
+        <% } %>
+        <button type="submit">دخول</button>
+      </form>
+    </div>
+    <div style="height: 48vh"></div>
+    <div class="footers">
+      <div class="row row-center">جميع الحقوق محفوظة لمنصة ﻳُسر 2025</div>
+    </div>
+  </body>
+</html>

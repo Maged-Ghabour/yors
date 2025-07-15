@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  SCHOOL
+  PARENT
+}
+
+enum RequestStatus {
+  NEW
+  ACCEPTED
+  REJECTED
+  VIEWED
+}
+
+model Student {
+  id             Int    @id @default(autoincrement())
+  name           String
+  nationalNumber String
+  school         User?  @relation(fields: [schoolId], references: [id], name: "SchoolStudents")
+  schoolId       Int?
+
+  parent   User? @relation(fields: [parentId], references: [id], name: "ParentStudents")
+  parentId Int?
+
+  request Request[]
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  email          String?  @unique
+  name           String?
+  password       String?
+  phone          String? // used for parent
+  nationalNumber String? // used for parent
+  otp            String?
+  userType       UserType
+
+  outcomeRequest Request[] @relation(name: "ParentRequests")
+  incomeRequest  Request[] @relation(name: "SchoolRequests")
+  schoolStudents Student[] @relation(name: "SchoolStudents")
+  parentStudents Student[] @relation(name: "ParentStudents")
+}
+
+model Request {
+  id          Int           @id @default(autoincrement())
+  reason      String?
+  status      RequestStatus @default(NEW)
+  attachments String
+
+  parent   User? @relation(fields: [parentId], references: [id], name: "ParentRequests")
+  parentId Int?
+
+  school   User? @relation(fields: [schoolId], references: [id], name: "SchoolRequests")
+  schoolId Int?
+
+  student   Student? @relation(fields: [studentId], references: [id])
+  studentId Int?
+
+  acceptedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@map("ParentRequest")
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>معلومات الطلب</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+    <div class="container">
+      <div id="request-details">
+        <h1>تفاصيل الطلب</h1>
+        <h4>حالة الطلب</h4>
+        <% if (request.status === "NEW") { %>
+        <span style="color: dimgray">قيد المراجعة</span>
+        <% } else if (request.status === "VIEWED") { %>
+        <span style="color: blue">معلق</span>
+        <% } else if (request.status === "ACCEPTED") { %>
+        <span style="color: green">مقبول</span>
+        <% } else if (request.status === "REJECTED") { %>
+        <span style="color: red">مرفوض</span>
+        <% } %> <% if (canMakeAction) { %>
+        <div class="row request-action-buttons">
+          <form action="/requests/<%= request.id %>/accept" method="POST">
+            <button class="btn" type="submit">قبول الطلب</button>
+          </form>
+          <form action="/requests/<%= request.id %>/reject" method="POST">
+            <button class="btn red" type="submit">رفض الطلب</button>
+          </form>
+        </div>
+        <% } %>
+
+        <h4>تاريخ ووقت الموافقة</h4>
+        <span>
+          <%= request.acceptedAt != null ? request.acceptedAt : '-' %>
+        </span>
+
+        <h4>اسم ولي الامر</h4>
+        <span><%= request.parent.name %></span>
+
+        <h4>اسم الطالب</h4>
+        <span><%= request.student.name %></span>
+
+        <h4>اسم المدرسة</h4>
+        <span><%= request.school.name %></span>
+
+        <h4>سبب الاستئذان</h4>
+        <span><%= request.reason %></span>
+
+        <h4>المرفقات</h4>
+        <div class="image-grid">
+          <% for(var i = 0; i < request.attachments.length; i++) { %>
+          <img src="/<%= request.attachments[i] %>" />
+          <% } %>
+        </div>
+
+        <a
+          style="font-size: 1.2em; width: fit-content"
+          href="#"
+          onclick="smartBack()"
+        >
+          ➔ عودة
+        </a>
+      </div>
+    </div>
+    <script>
+      function smartBack() {
+        const currentURL = window.location.href;
+        const referrer = document.referrer;
+
+        // If the previous page is the same as current, go back twice
+        if (referrer === currentURL) {
+          window.history.go(-2);
+        } else {
+          window.history.back();
+        }
+      }
+    </script>
+  </body>
+</html>

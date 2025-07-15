@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>لوحة تحكم المدرسة</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+    <div class="dashboard-container">
+      <div class="sidebar">
+        <h3>لوحة تحكم الادارة</h3>
+        <br />
+        <a href="/" class="sidebar-link">
+          <i class="bi bi-house"></i>&nbsp;
+          <span>الرئيسية</span>
+        </a>
+        <a href="/school" class="sidebar-link">
+          <i class="bi bi-ui-radios-grid"></i>&nbsp;
+          <span>لوحة التحكم</span>
+        </a>
+        <a href="/school/search" class="sidebar-link">
+          <i class="bi bi-search"></i>&nbsp;
+          <span>البحث عن الطلبات</span>
+        </a>
+        <a href="/school/students" class="sidebar-link">
+          <i class="bi bi-person-lines-fill"></i>&nbsp;
+          <span>الطلاب</span>
+        </a>
+        <a href="/support" class="sidebar-link">
+          <i class="bi bi-headset"></i>&nbsp;
+          <span>الدعم الفني</span>
+        </a>
+        <a href="/auth/logout" class="sidebar-link">
+          <i class="bi bi-box-arrow-right"></i>&nbsp;
+          <span>تسجيل الخروج</span>
+        </a>
+      </div>
+      <div class="dashboard-content">
+        <h2>البحث عن الطلبات</h2>
+        <div>
+          <form style="width: auto">
+            <label>فلترة حسب رقم جوال ولي الامر :</label>
+            <div class="row">
+              <input
+                type="text"
+                name="parentPhone"
+                id="parentPhone"
+                placeholder="ادخل رقم ولي الامر"
+              />
+              <button class="btn">بحث</button>
+            </div>
+          </form>
+          <br />
+          <% if (locals.requests){ %>
+          <table border="1" width="100%" style="text-align: center">
+            <tr>
+              <th>الطالب</th>
+              <th>المدرسة</th>
+              <th>الحالة</th>
+              <th>تاريخ ووقت الموافقة</th>
+              <th>تفاصيل</th>
+            </tr>
+            <% if (requests.length > 0) { %> <% for (let i = 0; i <
+            requests.length; i++) { %>
+            <tr>
+              <td><%= requests[i].student.name %></td>
+              <td><%= requests[i].school.name %></td>
+              <td>
+                <% if (requests[i].status === "NEW") { %>
+                <span style="color: dimgray">قيد المراجعة</span>
+                <% } else if (requests[i].status === "VIEWED") { %>
+                <span style="color: blue">معلق</span>
+                <% } else if (requests[i].status === "ACCEPTED") { %>
+                <span style="color: green">مقبول</span>
+                <% } else if (requests[i].status === "REJECTED") { %>
+                <span style="color: red">مرفوض</span>
+                <% } %>
+              </td>
+              <td>
+                <%= requests[i].acceptedAt != null ? requests[i].acceptedAt :
+                '-' %>
+              </td>
+              <td>
+                <a href="/requests/<%= requests[i].id %>">عرض التفاصيل</a>
+              </td>
+            </tr>
+            <% } %> <% } else { %>
+            <tr>
+              <td colspan="6">لا يوجد طلبات</td>
+            </tr>
+            <% } %>
+          </table>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

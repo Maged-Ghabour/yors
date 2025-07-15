@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>لوحة تحكم المدرسة</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+    <div class="dashboard-container">
+      <div class="sidebar">
+        <h3>لوحة تحكم الادارة</h3>
+        <br />
+        <a href="/" class="sidebar-link">
+          <i class="bi bi-house"></i>&nbsp;
+          <span>الرئيسية</span>
+        </a>
+        <a href="/school" class="sidebar-link">
+          <i class="bi bi-ui-radios-grid"></i>&nbsp;
+          <span>لوحة التحكم</span>
+        </a>
+        <a href="/school/search" class="sidebar-link">
+          <i class="bi bi-search"></i>&nbsp;
+          <span>البحث عن الطلبات</span>
+        </a>
+        <a href="/school/students" class="sidebar-link">
+          <i class="bi bi-person-lines-fill"></i>&nbsp;
+          <span>الطلاب</span>
+        </a>
+        <a href="/support" class="sidebar-link">
+          <i class="bi bi-headset"></i>&nbsp;
+          <span>الدعم الفني</span>
+        </a>
+        <a href="/auth/logout" class="sidebar-link">
+          <i class="bi bi-box-arrow-right"></i>&nbsp;
+          <span>تسجيل الخروج</span>
+        </a>
+      </div>
+      <div class="dashboard-content">
+        <div class="row">
+          <h2>اضافة طالب جديد</h2>
+          <div style="flex: 1"></div>
+          <a href="/school/add-student">
+            <button class="btn">اضافة طالب جديد</button>
+          </a>
+        </div>
+        <table border="1" width="100%" style="text-align: center">
+          <tr>
+            <th>اسم الطالب</th>
+            <th>رقم الهوية</th>
+            <th>اسم ولي الامر</th>
+            <th>رقم جوال ولي الامر</th>
+            <th>رقم هوية ولي الامر</th>
+          </tr>
+          <% if (students.length > 0) { %> <% for (let i = 0; i <
+          students.length; i++) { %>
+          <tr>
+            <td><%= students[i].name %></td>
+            <td><%= students[i].nationalNumber %></td>
+            <td><%= students[i].parent.name %></td>
+            <td><%= students[i].parent.phone %></td>
+            <td><%= students[i].parent.nationalNumber %></td>
+          </tr>
+          <% } %> <% } else { %>
+          <tr>
+            <td colspan="6">لا يوجد طلاب</td>
+          </tr>
+          <% } %>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

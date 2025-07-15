@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>لوحة تحكم المدرسة</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+    <div class="dashboard-container">
+      <div class="sidebar">
+        <h3>لوحة تحكم الادارة</h3>
+        <br />
+        <a href="/" class="sidebar-link">
+          <i class="bi bi-house"></i>&nbsp;
+          <span>الرئيسية</span>
+        </a>
+        <a href="/school" class="sidebar-link">
+          <i class="bi bi-ui-radios-grid"></i>&nbsp;
+          <span>لوحة التحكم</span>
+        </a>
+        <a href="/school/search" class="sidebar-link">
+          <i class="bi bi-search"></i>&nbsp;
+          <span>البحث عن الطلبات</span>
+        </a>
+        <a href="/school/students" class="sidebar-link">
+          <i class="bi bi-person-lines-fill"></i>&nbsp;
+          <span>الطلاب</span>
+        </a>
+        <a href="/support" class="sidebar-link">
+          <i class="bi bi-headset"></i>&nbsp;
+          <span>الدعم الفني</span>
+        </a>
+        <a href="/auth/logout" class="sidebar-link">
+          <i class="bi bi-box-arrow-right"></i>&nbsp;
+          <span>تسجيل الخروج</span>
+        </a>
+      </div>
+      <div class="dashboard-content">
+        <form method="post" style="width: auto">
+          <h2>اضافة طالب جديد</h2>
+          <h3>معلومات الطالب :</h3>
+          <input name="studentName" type="text" placeholder="اسم الطالب" />
+          <input
+            name="studentNationalNumber"
+            type="text"
+            placeholder="رقم هوية الطالب"
+          />
+          <h3>معلومات ولي الامر :</h3>
+          <input name="parentName" type="text" placeholder="اسم ولي الامر" />
+          <input
+            name="parentPhone"
+            type="text"
+            placeholder="رقم جوال ولي الامر"
+          />
+          <input
+            name="parentNationalNumber"
+            type="text"
+            placeholder="رقم هوية ولي الامر"
+          />
+          <% if(locals.error) { %>
+          <p class="error-alert"><%= error %></p>
+          <% } %>
+          <button type="submit">اضافة الطالب</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

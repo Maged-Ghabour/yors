@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تسجيل مدرسة</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body dir="rtl" lang="ar">
+    <div class="container">
+      <form id="signup-form" method="post">
+        <a href="/">الصفحة الرئيسية</a>
+        <h2>تسجيل مدرسة</h2>
+        <input name="name" type="text" placeholder="اسم المدرسة" />
+        <input name="email" type="email" placeholder="البريد الإلكتروني" />
+        <input name="password" type="password" placeholder="كلمة المرور" />
+        <% if(locals.error) { %>
+        <p class="error-alert"><%= error %></p>
+        <% } %>
+        <button type="submit">تسجيل</button>
+      </form>
+    </div>
+    <div style="height: 50vh"></div>
+    <div class="footers">
+      <div class="row row-center">جميع الحقوق محفوظة لمنصة ﻳُسر 2025</div>
+    </div>
+  </body>
+</html>

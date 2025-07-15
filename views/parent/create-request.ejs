@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>طلب جديد</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+   
+  </style>
+
+
+  </head> 
+  <body dir="rtl" lang="ar">
+     
+    <!-- Add NavBar  -->
+
+
+<nav class="visitor-nav">
+      <div class="header">
+      <img src="/images/logo-trans9.png" alt="شعار الموقع" class="logo">
+     </div>
+
+
+        <a href="#">
+        اهلا
+        <b><%= user.name %></b>
+      </a>
+      <a href="/">
+        <i class="bi bi-house-door-fill"></i>&nbsp;
+        <span>الصفحة الرئيسية</span>
+      </a>
+      <a class="nav-link" href="/parent">
+        <i class="bi bi-list-ul"></i>&nbsp;
+        <span>طلباتي</span>
+      </a>
+      <a class="nav-link" target="_blank" href="https://t.me/toma_1411">
+        <i class="bi bi-headset"></i>&nbsp;
+        <span>الدعم الفني</span>
+      </a>
+      <a class="nav-link" href="/auth/logout">
+        <i class="bi bi-box-arrow-right"></i>&nbsp;
+        <span>تسجيل الخروج</span>
+      </a>
+
+    </nav>
+    
+    
+  <!-- End NavBar  -->
+    <!-- <nav>
+   
+    </nav> -->
+    <div class="container">
+      <form
+        id="create-request-form"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <h2>طلب استئذان جديد</h2>
+        <select name="studentId">
+          <option>- اختر الطالب -</option>
+          <% for(var i = 0; i < students.length; i++) { %>
+          <option value="<%= students[i].id %>">
+            الطالب: <%= students[i].name %> ( اسم المدرسة : <%=
+            students[i].school.name %>)
+          </option>
+          <% } %>
+        </select>
+        <textarea name="reason" placeholder="سبب الطلب"></textarea>
+        <label>المرفقات</label>
+        <input
+          name="attachments"
+          type="file"
+          accept=".png,.jpg,.jpeg,.PNG,.JPG,.JPEG"
+          multiple
+        />
+        <% if(locals.error) { %>
+        <p class="error-alert"><%= error %></p>
+        <% } %>
+        <button type="submit">إرسال الطلب</button>
+      </form>
+    </div>
+    <div style="height: 35vh"></div>
+    <div class="footers">
+      <div class="row row-center">جميع الحقوق محفوظة لمنصة ﻳُسر 2025</div>
+    </div>
+  </body>
+</html>

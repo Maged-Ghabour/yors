@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>طلباتي</title>
+  <link rel="stylesheet" href="/css/style.css" />
+
+</head>
+
+
+
+<body dir="rtl" lang="ar">
+  <nav style="background-color:rgba(34, 75, 63, 0.879)">
+    <a href="/parent/profile">
+      اهلا
+      <b>
+        <%= user.name %>
+      </b>
+    </a>
+    <a href="/">
+      <i class="bi bi-house-door-fill"></i>&nbsp;
+      <span>الصفحة الرئيسية</span>
+    </a>
+    <a class="nav-link" href="/parent">
+      <i class="bi bi-list-ul"></i>&nbsp;
+      <span>طلباتي</span>
+    </a>
+    <a class="nav-link" href="/support">
+      <i class="bi bi-headset"></i>&nbsp;
+      <span>الدعم الفني</span>
+    </a>
+    <a class="nav-link" href="/auth/logout">
+      <i class="bi bi-box-arrow-right"></i>&nbsp;
+      <span>تسجيل الخروج</span>
+    </a>
+  </nav>
+  <div class="container" style="min-height: 85vh">
+    <div class="row" style="margin: 10px 0px; align-items: end">
+      <h2>طلباتي</h2>
+      <div style="flex: 1"></div>
+      <a href="/parent/create-request">
+        <button class="btn">انشاء طلب جديد</button>
+      </a>
+    </div>
+    <table border="1" width="100%" style="text-align: center">
+      <tr>
+        <th>الطالب</th>
+        <th>المدرسة</th>
+        <th>الحالة</th>
+        <th>تاريخ ووقت الموافقة</th>
+        <th>الإجراءات</th>
+      </tr>
+      <% if (requests.length> 0) { %> <% for (let i=0; i < requests.length; i++) { %>
+          <tr>
+            <td>
+              <%= requests[i].student.name %>
+            </td>
+            <td>
+              <%= requests[i].school.name %>
+            </td>
+            <td>
+              <% if (requests[i].status==="NEW" ) { %>
+                <span style="color: dimgray">قيد المراجعة</span>
+                <% } else if (requests[i].status==="VIEWED" ) { %>
+                  <span style="color: blue">معلق</span>
+                  <% } else if (requests[i].status==="ACCEPTED" ) { %>
+                    <span style="color: green">مقبول</span>
+                    <% } else if (requests[i].status==="REJECTED" ) { %>
+                      <span style="color: red">مرفوض</span>
+                      <% } %>
+            </td>
+            <td>
+              <%= requests[i].acceptedAt !=null ? requests[i].acceptedAt : '-' %>
+            </td>
+            <td>
+              <a href="/requests/<%= requests[i].id %>">عرض التفاصيل</a>
+            </td>
+          </tr>
+          <% } %>
+            <% } else { %>
+              <tr>
+                <td colspan="5">لا يوجد طلبات</td>
+              </tr>
+              <% } %>
+    </table>
+  </div>
+  <div class="footers">
+    <div class="row row-center">جميع الحقوق محفوظة لمنصة ﻳُسر 2025</div>
+  </div>
+</body>
+
+</html>

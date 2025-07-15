@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>الملف الشخصي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">الملف الشخصي لولي الأمر</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>الاسم:</strong>
+                    <%= user.name || '---' %>
+                </p>
+                <p><strong>رقم الهوية:</strong>
+                    <%= user.nationalNumber || '---' %>
+                </p>
+                <p><strong>رقم الجوال:</strong>
+                    <%= user.phone || '---' %>
+                </p>
+                <p><strong>البريد الإلكتروني:</strong>
+                    <%= user.email || '---' %>
+                </p>
+
+                <hr />
+
+                <h5>أبناء ولي الأمر:</h5>
+                <% if (user.parentStudents.length> 0) { %>
+                    <ul class="list-group">
+                        <% user.parentStudents.forEach(student=> { %>
+                            <li class="list-group-item">
+                                <%= student.name %> - رقم الهوية: <%= student.nationalNumber %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } else { %>
+                        <p class="text-muted">لا يوجد أبناء مسجلين.</p>
+                        <% } %>
+            </div>
+            <div class="card-footer text-end">
+                <a href="/parent" class="btn btn-secondary">العودة للوحة التحكم</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

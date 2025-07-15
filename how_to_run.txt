@@ -1,0 +1,17 @@
+1) you need to have (nodejs version 22), https://nodejs.org/en/download
+2) open project folder using vscode
+3) open terminal in the vscode
+4) from terminal window at the top right corner , press the small bottom arrow and select command prompt
+5) install project pakcages using the following command: `npm i`
+6) generate prisma client using this command: `npm run prisma:generate`
+7) migrate prisma database using this command: `npm run prisma:migrate`, and the write `init` if needed.
+8) seed the database with demo data using this command: `npm run prisma:seed`
+9) run project using this command: `npm run start`
+
+
+# notes:
+the twilio service currently working only on the number of the project owner, if you want it to work on all numbers
+then you need to upgrade your account in twilio website
+
+# currently otp is disabled and you can enable it from `.env` file by setting `DB_OTP` to `false`
+# the otp will always be `000000` if twilio is disabled
